@@ -153,7 +153,7 @@ export default function PlayBox() {
       </div>
 
       {isModal1Open && (
-        <div className="fixed flex items-center justify-center bg-black ">
+        <div className="fixed inset-0 flex items-center justify-center bg-black ">
           <div className="p-4 relative w-full h-full animate-slide-up">
             <button
               onClick={closeModal}
