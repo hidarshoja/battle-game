@@ -47,7 +47,7 @@ html, body {
 }
 
 .bg-black {
-  background-color: rgba(0, 0, 0, 0.89);
+  background-color: rgba(0, 0, 0, 0.945);
   z-index: 5; /* شفافیت برای پس‌زمینه */
 }
 
