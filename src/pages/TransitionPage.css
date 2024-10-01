@@ -1,0 +1,197 @@
+.transition-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 80vh;
+    background-color: black;
+    opacity: 0.5;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .transition-page.visible {
+    opacity: 1;
+  }
+  
+  .timer {
+    font-size: 5rem;
+    color: white;
+  }
+  
+  .content {
+    text-align: center;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .transition-page.visible .content {
+    opacity: 1;
+  }
+  
+  .opponents {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .opponents img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 10px;
+  }
+  .opponents {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+  }
+  
+  .circle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  
+  .opponent {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+  
+  .opponent:nth-child(1) {
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .opponent:nth-child(2) {
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .opponent:nth-child(3) {
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .opponent:nth-child(4) {
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+  }
+  .opponents {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+  }
+  
+  .circle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  
+  .opponent {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+  
+  .opponent:nth-child(1) {
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .opponent:nth-child(2) {
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .opponent:nth-child(3) {
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .opponent:nth-child(4) {
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .center-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgb(196, 196, 196);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.587);
+    border: 2px solid #ddd;
+    
+  }
+
+
+  .cancel-button {
+    position: absolute;
+    bottom: -100px; /* فاصله 100 پیکسل از پایین */
+    left: 50%; /* تنظیم به وسط صفحه از نظر افقی */
+    transform: translateX(-50%); /* تبدیل برای تنظیم دقیق به وسط */
+    padding: 10px 20px; /* فاصله داخلی برای دکمه */
+ 
+    color: white; /* رنگ متن دکمه */
+    border: none; /* حذف حاشیه */
+    border-radius: 5px; /* گرد کردن گوشه‌ها */
+    cursor: pointer; /* نشانگر ماوس به صورت اشاره‌گر */
+    font-size: 16px; /* اندازه فونت */
+  }
+  
+  .opponent {
+    display: none;
+  }
+  
+  .opponent.visible {
+    display: block;
+  }
+  .final-timer {
+    position: absolute;
+    top: 50%; /* وسط صفحه */
+    left: 50%; /* وسط صفحه */
+    transform: translate(-50%, -50%); /* برای مرکز کردن */
+    font-size: 48px; /* سایز متن */
+    color: white; /* رنگ متن */
+   z-index: 9999;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.904); /* رنگ دودی */
+    z-index: 999; /* قرار دادن لایه بالای بقیه محتوا */
+  }
+  
+  
+  

@@ -1,0 +1,123 @@
+.game-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+   
+    color: white;
+    padding: 20px;
+  }
+
+  .game-board {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+    height: 200px;
+   
+}
+
+
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .status {
+    display: flex;
+    align-items: center;
+  }
+  
+  .indicator {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  
+  .green {
+    color: green;
+  }
+  
+  .players-info {
+    display: flex;
+  }
+  
+  .info-box {
+    margin: 0 10px;
+  }
+  
+  
+  
+  .round-info {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+  
+  .players {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0 0 0;
+  }
+  
+  .player-circle {
+    position: relative;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .player {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  
+  .volume-icon {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 20px;
+  }
+  
+  .tap-here {
+    margin-top: 40px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .timer-icon {
+    color: green;
+    font-size: 2rem; 
+}
+
+.bubble {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6);
+  animation: float 2.5s ease-out forwards;
+}
+
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px); 
+    opacity: 0; 
+  }
+}
+.bubble-text {
+  color: #000;
+  font-weight: bold;
+}
