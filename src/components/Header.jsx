@@ -1,15 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Header() {
+  const [userData, setUserData] = useState(null);
+  const botToken = "6721669885:AAGCMtANCXoK3siOIUTzM3bM0Tlma7MbxT8"; 
+  const userId = "6303143547"; 
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.telegram.org/bot${botToken}/getUserProfilePhotos?user_id=${userId}`
+        );
+        console.log(response.data.result.photos[0][0].file_id);
+        if (response.data.result && response.data.result.photos) {
+          const photos = response.data.result.photos;
+          const profilePhoto = photos[0][0].file_id; 
+          setUserData({ profilePhoto });
+        } else {
+          console.error("No photos found in response");
+        }
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+      }
+    };
+
+    fetchUserProfile();
+  }, [botToken, userId]);
+
   return (
     <div>
       <div className="flex w-full justify-between items-center mb-4">
         <div className="flex">
-          <img
-            className="header-img-user w-[33px] h-[33px] mr-2.5 rounded-full max-w-full block  border-2 border-white"
-            src=""
-            alt=""
-          />
+          {userData && userData.profilePhoto ? (
+            <img
+              className="header-img-user w-[33px] h-[33px] mr-2.5 rounded-full max-w-full block border-2 border-white"
+              src={`https://api.telegram.org/file/bot${botToken}/${userData.profilePhoto}`}
+              alt="User"
+            />
+          ) : (
+            <img
+              className="header-img-user w-[33px] h-[33px] mr-2.5 rounded-full max-w-full block border-2 border-white"
+              src=""
+              alt=""
+            />
+          )}
           <div className="info-infos">
             <div className="info-name">
               <h2 className="text-white text-0.8rem">No Name</h2>

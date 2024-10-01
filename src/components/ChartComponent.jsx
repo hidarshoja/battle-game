@@ -1,13 +1,65 @@
-import React from "react";
+import { useState } from "react";
 
 export default function ChartComponent() {
+  const [usdAmount, setUsdAmount] = useState(3500);
+  const [tonRate, setTonRate] = useState(null);
+  const [convertedAmount, setConvertedAmount] = useState(null);
+
+  const fetchTonRate = async () => {
+    try {
+      const response = await fetch(
+        "https://api.coingecko.com/api/v3/simple/price?ids=the-open-network&vs_currencies=usd"
+      );
+      const data = await response.json();
+      if (data["the-open-network"] && data["the-open-network"].usd) {
+        const tonRate = data["the-open-network"].usd;
+        setTonRate(tonRate);
+        const tonAmount = calculateTonAmount(usdAmount, tonRate);
+        setConvertedAmount(tonAmount);
+      } else {
+        console.error("TON rate data is not available in the response:", data);
+      }
+    } catch (error) {
+      console.error("Error fetching TON rate:", error);
+      setTonRate(0);
+    }
+  };
+
+  const calculateTonAmount = (usdAmount, tonRate) => {
+    if (tonRate && tonRate > 0) {
+      return (usdAmount / tonRate).toFixed(1);
+    } else {
+      return "...";
+    }
+  };
+
+  const calculateUsdAmount = (tonAmount, tonRate) => {
+    if (tonRate && tonRate > 0) {
+      return (tonAmount * tonRate).toFixed(1);
+    } else {
+      return "...";
+    }
+  };
+
+  const handleAmountClick = () => {
+    if (!tonRate) {
+      fetchTonRate();
+    } else if (convertedAmount) {
+      const usd = calculateUsdAmount(convertedAmount, tonRate);
+      setConvertedAmount(null);
+      setUsdAmount(usd);
+    } else {
+      const tonAmount = calculateTonAmount(usdAmount, tonRate);
+      setConvertedAmount(tonAmount);
+    }
+  };
+
   return (
     <div className="flex w-full justify-between">
       <div className="w-[45%]">
-        <div className="text-white text-[35px] font-bold mb-1 tracking-wider">
-          3.5000
+        <div className="text-white text-[35px] font-bold mb-1 tracking-wider" onClick={handleAmountClick}>
+          {convertedAmount ? `${convertedAmount}` : usdAmount}
         </div>
-
         <h4 className="text-white text-sm">
           (<span className="text-white">TON</span>)
         </h4>
